@@ -3,14 +3,14 @@ import java.util.Map;
 
 public class TypeJ {
     String opCode;
-    String immediate;
+    String adress;
     String[] instruction;
     Map<String, String> typeJ;
     Tools tools;
 
    public TypeJ(){
        opCode=" ";
-       immediate=" ";
+       adress=" ";
        instruction=null;
        typeJ = new HashMap<>();
        tools=new Tools();
@@ -29,13 +29,13 @@ public class TypeJ {
    public void setInstruction(String[] instruction){
        this.instruction=instruction;
        opCode = getOpCode(instruction[0]);
-       immediate = getImmediate();
+       adress = getAdress();
    }
-   public String getImmediate(){
+   public String getAdress(){
        return tools.DecimalToBinary(instruction[1],26);
    }
     public String getOpCode(String opCode){return typeJ.getOrDefault(opCode, null);}
 
-    public String getBinaryInstruction(){return (opCode+" "+immediate);}
+    public String getBinaryInstruction(){return (opCode+" "+adress);}
 
 }
