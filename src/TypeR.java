@@ -56,7 +56,7 @@ public class TypeR {
         typeR.put("jalr", "001001");
     }
 
-   public void setShamt(String shamt){this.shamt= tools.DecimalToBinary(shamt,5);}
+   private void setShamt(String shamt){this.shamt= tools.DecimalToBinary(shamt,5);}
 
    public void setInstruction(String[] instruction){
        this.instruction=instruction;
@@ -65,7 +65,7 @@ public class TypeR {
        funct = getFunction(instruction[0]);
    }
 
-   public void setRegistersTypeR(){
+   private void setRegistersTypeR(){
         if(instruction[0].equals("sll")||instruction[0].equals("srl")||instruction[0].equals("sra")) {
             rs = registers.getRegister("$zero");
             rt = registers.getRegister(instruction[2]);
@@ -93,10 +93,10 @@ public class TypeR {
             rd = registers.getRegister(instruction[1]);
         }
    }
-    public String getFunction(String function){return typeR.getOrDefault(function, null);}
+    private String getFunction(String function){return typeR.getOrDefault(function, null);}
 
-    public String getShamt(){return shamt;}
+    private String getShamt(){return shamt;}
 
-    public String getBinaryInstruction(){return (opCode+" "+rs+" "+rt+" "+rd+" "+shamt+" "+funct);}
+    public String getBinaryInstruction(){return (opCode+rs+rt+rd+shamt+funct);}
 
 }

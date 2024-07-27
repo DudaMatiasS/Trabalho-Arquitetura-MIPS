@@ -31,11 +31,11 @@ public class TypeJ {
        opCode = getOpCode(instruction[0]);
        adress = getAdress();
    }
-   public String getAdress(){
+   private String getAdress(){
        return tools.DecimalToBinary(instruction[1],26);
    }
-    public String getOpCode(String opCode){return typeJ.getOrDefault(opCode, null);}
+    private String getOpCode(String opCode){return typeJ.getOrDefault(opCode, null);}
 
-    public String getBinaryInstruction(){return (opCode+" "+adress);}
+    public String getBinaryInstruction(){return (opCode+adress);}
 
 }

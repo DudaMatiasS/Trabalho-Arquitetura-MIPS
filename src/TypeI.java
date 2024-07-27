@@ -62,9 +62,8 @@ public class TypeI {
        setRegisters();
        immediate = getImmediate();
    }
-   private void setImmediate(String immediate){
-       this.immediate = tools.DecimalToBinary(immediate,16);
-   }
+   private void setImmediate(String immediate){this.immediate = tools.DecimalToBinary(immediate,16);}
+
    private void setRegisters(){
        if(instruction[0].equals("addi")||instruction[0].equals("addiu")||instruction[0].equals("slti")||instruction[0].equals("sltiu")||instruction[0].equals("andi")||instruction[0].equals("ori")||instruction[0].equals("xori")||instruction[0].equals("lui")||instruction[0].equals("beq")||instruction[0].equals("bne")) {
            rs = registers.getRegister(instruction[2]);
@@ -91,8 +90,9 @@ public class TypeI {
        }
 
    }
-    private String getImmediate() {return immediate;}
+   private String getImmediate() {return immediate;}
     private String getOpCode(String opCode){return typeI.getOrDefault(opCode, null);}
-    public String getBinaryInstruction(){return (opCode+" "+rs+" "+rt+" "+immediate);}
+
+    public String getBinaryInstruction(){return (opCode+rs+rt+immediate);}
 
 }
