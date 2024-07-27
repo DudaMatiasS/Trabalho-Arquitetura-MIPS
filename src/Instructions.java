@@ -7,9 +7,9 @@ public class Instructions {
     String immediate;
    Registers registers;
 
-    Type typeR;
+    TypeR typeR;
     public Instructions(String[] instruction){
-        typeR = new Type();
+        typeR = new TypeR();
         registers= new Registers();
         this.instruction = instruction;
         if(typeR.isTypeR(instruction[0])){

@@ -1,10 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
-public class Type {
+public class TypeR {
     String opCode;
     String shamt;
     Map<String, String> typeR;
-   public Type(){
+   public TypeR(){
        opCode="000000";
        shamt=null;
        typeR = new HashMap<>();
