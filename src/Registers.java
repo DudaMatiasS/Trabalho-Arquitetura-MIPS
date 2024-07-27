@@ -34,6 +34,7 @@ public class Registers {
         registers.put("$s3", "10011");
         registers.put("$s4", "10100");
         registers.put("$s5", "10101");
+        registers.put("$s6", "010110");
         registers.put("$s7", "10111");
         registers.put("$t8", "11000");
         registers.put("$t9", "11001");
