@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+
 public class TypeR {
     String opCode;
     String shamt;
@@ -10,6 +11,7 @@ public class TypeR {
     String[] instruction;
     Registers registers;
     Map<String, String> typeR;
+    Tools tools;
 
    public TypeR(){
        opCode="000000";
@@ -17,14 +19,15 @@ public class TypeR {
        instruction=null;
        typeR = new HashMap<>();
        registers= new Registers();
-       setOperatorBinary();
+       tools=new Tools();
+       setFunctOperatorBinary();
    }
 
     public boolean isTypeR(String mnemonic){
         return typeR.containsKey(mnemonic);
     }
 
-    private void setOperatorBinary(){
+    private void setFunctOperatorBinary(){
         typeR.put("add","100000");
         typeR.put("addu","100001");
         typeR.put("sub","100010");
@@ -51,35 +54,18 @@ public class TypeR {
         typeR.put("divu", "011011");
         typeR.put("jr", "001000");
         typeR.put("jalr", "001001");
-
     }
-   public String getFunction(String function){return typeR.getOrDefault(function, null);}
 
-   public String getOpCode(){
-       return opCode;
-   }
+   public void setShamt(String shamt){this.shamt= tools.DecimalToBinary(shamt,5);}
 
-   public void setShamt(String shamt){this.shamt=DecimalToBinary(shamt);}
-
-   public String getShamt(){
-       return shamt;
-   }
-
-   public String DecimalToBinary(String decimal) {
-        int decimalNumber = Integer.parseInt(decimal);
-        String binaryString = Integer.toBinaryString(decimalNumber);
-        while (binaryString.length() < 5) {
-            binaryString = "0" + binaryString;
-        }
-        return binaryString;
-   }
    public void setInstruction(String[] instruction){
        this.instruction=instruction;
-       opCode= getOpCode();
+       setRegistersTypeR();
+       shamt=getShamt();
        funct = getFunction(instruction[0]);
-       setRegistersAndShamtTypeR();
    }
-    public void setRegistersAndShamtTypeR(){
+
+   public void setRegistersTypeR(){
         if(instruction[0].equals("sll")||instruction[0].equals("srl")||instruction[0].equals("sra")) {
             rs = registers.getRegister("$zero");
             rt = registers.getRegister(instruction[2]);
@@ -106,11 +92,11 @@ public class TypeR {
             rt = registers.getRegister(instruction[3]);
             rd = registers.getRegister(instruction[1]);
         }
-        shamt = getShamt();
-    }
+   }
+    public String getFunction(String function){return typeR.getOrDefault(function, null);}
 
-    public String getInstruction(){
-       return (opCode+" "+rs+" "+rt+" "+rd+" "+shamt+" "+funct);
-    }
+    public String getShamt(){return shamt;}
+
+    public String getInstruction(){return (opCode+" "+rs+" "+rt+" "+rd+" "+shamt+" "+funct);}
 
 }
