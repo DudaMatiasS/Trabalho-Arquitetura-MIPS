@@ -10,6 +10,7 @@ public class Registers {
     }
     private void setRegisters(){
         registers.put("$zero", "00000");
+        registers.put("$r0", "00000");
         registers.put("$at", "00001");
         registers.put("$v0", "00010");
         registers.put("$v1", "00011");
@@ -38,10 +39,24 @@ public class Registers {
         registers.put("$k1", "11011");
         registers.put("$gp", "11100");
         registers.put("$sp", "11101");
+        registers.put("$s8", "11110");
         registers.put("$fp", "11110");
         registers.put("$ra", "11111");
     }
     public String getRegister(String r){
-        return registers.getOrDefault(r, null);
+        if(r.startsWith("$")){
+            return registers.getOrDefault(r, null);
+        }else{
+            return DecimalToBinary(r);
+        }
+
+    }
+    public String DecimalToBinary(String decimal) {
+        int decimalNumber = Integer.parseInt(decimal);
+        String binaryString = Integer.toBinaryString(decimalNumber);
+        while (binaryString.length() < 5) {
+            binaryString = "0" + binaryString;
+        }
+        return binaryString;
     }
 }
