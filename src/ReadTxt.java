@@ -19,7 +19,7 @@ public class ReadTxt {
 
 
         Instructions instructions = new Instructions(caracter);
-        System.out.println(line+": "+instructions.getInstruction());
+        System.out.println(line+": "+instructions.getBinaryInstruction());
 
     }
 

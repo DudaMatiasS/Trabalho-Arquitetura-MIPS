@@ -36,6 +36,6 @@ public class TypeJ {
    }
     public String getOpCode(String opCode){return typeJ.getOrDefault(opCode, null);}
 
-    public String getInstruction(){return (opCode+" "+immediate);}
+    public String getBinaryInstruction(){return (opCode+" "+immediate);}
 
 }

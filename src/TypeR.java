@@ -97,6 +97,6 @@ public class TypeR {
 
     public String getShamt(){return shamt;}
 
-    public String getInstruction(){return (opCode+" "+rs+" "+rt+" "+rd+" "+shamt+" "+funct);}
+    public String getBinaryInstruction(){return (opCode+" "+rs+" "+rt+" "+rd+" "+shamt+" "+funct);}
 
 }
