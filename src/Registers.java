@@ -2,9 +2,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Registers {
+    Tools tools;
     Map<String, String> registers;
     public Registers(){
         registers= new HashMap<>();
+        tools=new Tools();
         setRegisters();
 
     }
@@ -47,16 +49,9 @@ public class Registers {
         if(r.startsWith("$")){
             return registers.getOrDefault(r, null);
         }else{
-            return DecimalToBinary(r);
+            return tools.DecimalToBinary(r,5);
         }
 
     }
-    public String DecimalToBinary(String decimal) {
-        int decimalNumber = Integer.parseInt(decimal);
-        String binaryString = Integer.toBinaryString(decimalNumber);
-        while (binaryString.length() < 5) {
-            binaryString = "0" + binaryString;
-        }
-        return binaryString;
-    }
+
 }
