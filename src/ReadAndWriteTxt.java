@@ -16,7 +16,7 @@ public class ReadAndWriteTxt {
     private void lineBreak(String line){
         String [] caracter = line.replace("(", " ").replace(")"," ").replace(",", "").split(" ");
         Instructions instructions = new Instructions(caracter);
-        txtWriter(line+": "+instructions.getBinaryInstruction());
+        txtWriter(instructions.getBinaryInstruction());
 
     }
     private void txtWriter(String line) {
