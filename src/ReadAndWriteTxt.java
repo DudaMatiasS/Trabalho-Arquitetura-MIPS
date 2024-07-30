@@ -26,7 +26,7 @@ public class ReadAndWriteTxt {
         if(line == null){
             line = "Infelizmente não foi escrito. Verifique se há alguma instrução nessa linha! :(";
         }
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Duda\\Desktop\\Arquitetura\\src\\assets\\programOut.txt", true))) { // Modo de anexar (append)
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\assets\\programOut.txt", true))) { // Modo de anexar (append)
             writer.write(line);
             writer.newLine();
             writer.flush();
@@ -36,7 +36,7 @@ public class ReadAndWriteTxt {
     }
     private void txtClear(){
         try {
-            FileWriter fileWriter = new FileWriter("C:\\Users\\Duda\\Desktop\\Arquitetura\\src\\assets\\programOut.txt");
+            FileWriter fileWriter = new FileWriter("src\\assets\\programOut.txt");
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
