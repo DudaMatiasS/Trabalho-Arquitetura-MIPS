@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class ReadAndWriteTxt {
     public void txtReader(String filePath){
@@ -17,8 +18,14 @@ public class ReadAndWriteTxt {
         }
     }
     private void lineBreak(String line){
-        String [] caracter = line.replace("(", " ").replace(")"," ").replace(",", "").split(" ");
-        Instructions instructions = new Instructions(caracter);
+        String cleanLine = line.replace("(", " ").replace(")", " ").replace(",", "");
+        StringTokenizer caracter = new StringTokenizer(cleanLine, " \t\n");
+        int tokenCount = caracter.countTokens();
+        String[] caracterArr = new String[tokenCount];
+        for (int i = 0; i < tokenCount; i++) {
+            caracterArr[i] = caracter.nextToken();
+        }
+        Instructions instructions = new Instructions(caracterArr);
         txtWriter(instructions.getBinaryInstruction());
 
     }
