@@ -3,19 +3,21 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class ReadAndWriteTxt {
-    LinkedList<Instruction> instructionList = new LinkedList<>();
-   
+    Calculations calc;
+   ListaDE instructionList;
     public void txtReader(String filePath){
-
+        instructionList = new ListaDE();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line =reader.readLine()) != null) {
-                lineBreak(line.trim().toLowerCase());
+                if(!line.isEmpty()){
+                    lineBreak(line.trim().toLowerCase());
+                }
             }
             reader.close();
-           
-            Pipeline pipeline = new Pipeline(instructionList);
+            calc = new Calculations();
+            calc.setInstructionList(instructionList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,15 +33,14 @@ public class ReadAndWriteTxt {
             caracterArr[i] = caracter.nextToken();
         }
 
-        if(tokenCount==2){
-            instruction = new Instruction(caracterArr[0], caracterArr[1],null,null);
-        }else if(tokenCount ==3){
-            instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],null);
-        }else{
+       if(tokenCount==3){
+            instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],"");
+        }else if(tokenCount==4){
             instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],caracterArr[3]);
-        }
-
-        instructionList.add(instruction);
+        }else{
+           instruction = new Instruction(caracterArr[0], caracterArr[1],"","");
+       }
+        instructionList.insert(instruction);
 
     }
     private void txtWriter(String line) {
