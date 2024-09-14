@@ -75,41 +75,41 @@ public class Tools {
       allMnemonics.add(mnemonic);
       mnemonic=new Mnemonic("xori", "d");
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sw", "s");
+      mnemonic=new Mnemonic("sw", "s");//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sb", "s");
+      mnemonic=new Mnemonic("sb", "s");//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sh", "s");
+      mnemonic=new Mnemonic("sh", "s");//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("swl", "s");
+      mnemonic=new Mnemonic("swl", "s");//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("swr", "s");
+      mnemonic=new Mnemonic("swr", "s");//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mthi", "s");
+      mnemonic=new Mnemonic("mthi", "s");// ele salva o r1 em hi
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mtlo", "s");
+      mnemonic=new Mnemonic("mtlo", "s");// salva o r1 em Lo
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mult", "s");
+      mnemonic=new Mnemonic("mult", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("multu", "s");
+      mnemonic=new Mnemonic("multu", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("div", "s");
+      mnemonic=new Mnemonic("div", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("divu", "s");
+      mnemonic=new Mnemonic("divu", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("jr", "s");
+      mnemonic=new Mnemonic("jr", "s");// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bltz", "s");
+      mnemonic=new Mnemonic("bltz", "s");// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bgez", "s");
+      mnemonic=new Mnemonic("bgez", "s");// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bltzal", "s");
+      mnemonic=new Mnemonic("bltzal", "s");// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bgezal", "s");
+      mnemonic=new Mnemonic("bgezal", "s");// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("j", "s");
+      mnemonic=new Mnemonic("j", "s");// ele le o valor de r1 que no caso é um número
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("jal", "s");
+      mnemonic=new Mnemonic("jal", "s");// ele le o valor de r1 que no caso é um número
       allMnemonics.add(mnemonic);
    }
 

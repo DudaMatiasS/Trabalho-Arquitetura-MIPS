@@ -5,17 +5,19 @@ public class Instruction {
     private String r3;
     Instruction prev;
     Instruction next;
-
+    Registers register;
     public Instruction(String func, String r1, String r2, String r3){
         this.func=func;
         this.r1=r1;
         this.r2=r2;
         this.r3=r3;
+        register = new Registers();
     }
     public String getFunc() {
         return func;
     }
     public String getR2() {
+
         return r2;
     }
     public String getR3() {
