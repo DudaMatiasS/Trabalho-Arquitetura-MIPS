@@ -1,11 +1,23 @@
 public class Calculations {
     ListaDE instructionList;
-    Tools tool;
+    Tools tool =new Tools();;
     public void setInstructionList(ListaDE instructionList) {
         this.instructionList = instructionList;
-        tool=new Tools();
-        bubble();
-        instructionList.print();
+
+    }
+    public boolean setWhicConflict(String path){
+        if(path.contains("1")||path.contains("2")){
+            bubble();
+            return true;
+        } else if (path.contains("3")||path.contains("4")) {
+            forwarding();
+            return true;
+
+        }else{
+            return false;
+        }
+
+        //instructionList.print();
     }
 
     private void bubble(){
@@ -23,20 +35,33 @@ public class Calculations {
                             } else {
                                 instructionList.addNOP(i);
                             }
-                        } else if (i.getNext() != null && i.getNext().getNext() != null && (i.getNext().getNext().getR1().equals(i.getR1()) || i.getNext().getNext().getR2().equals(i.getR1()) || i.getNext().getNext().getR3().equals(i.getR1()))) {//1 e 3 inst
+                        }else if (i.getNext() != null && i.getNext().getNext() != null && (i.getNext().getNext().getR1().equals(i.getR1()) || i.getNext().getNext().getR2().equals(i.getR1()) || i.getNext().getNext().getR3().equals(i.getR1()))) {//1 e 3 inst
                             if (i.getFunc().equals("lw") || tool.instIsTypeR(i.getFunc())) {
                                 instructionList.addNOP(i.getNext());
                             }
                         }
-                    } else {
-                        //acredito que s com s nunca irá dar conflito e s com d tb nao dará
-                        //O QUE FAZER?
-                        //devo analisar seu a prox inst é tipo d ou s, se for s nao adciona nada, mas se for d pode dar algum b.o!!!
                     }
                 }
             }
             i=i.getNext();
         }
-
     }
+    public void forwarding(){
+        Instruction i = instructionList.getFirst();
+        while(i!=null){
+            if(!i.getFunc().equals("NOP")) {
+                if(!tool.isJump(i.getFunc())) {
+                    if (tool.isR1ForDestination(i.getFunc())) {
+                        if (i.getNext() != null && (i.getNext().getR1().equals(i.getR1()) || i.getNext().getR2().equals(i.getR1()) || i.getNext().getR3().equals(i.getR1()))) {// 1 e 2 inst
+                            if (tool.isForwardingMem(i.getFunc())) {
+                                instructionList.addNOP(i);
+                            }
+                        }
+                    }
+                }
+            }
+            i=i.getNext();
+        }
+    }
+
 }

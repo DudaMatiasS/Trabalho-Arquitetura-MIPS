@@ -7,109 +7,109 @@ public class Tools {
    }
    private void setMnemonicList(){
        allMnemonics = new ArrayList<>();
-      Mnemonic mnemonic=new Mnemonic("add", "d");
+      Mnemonic mnemonic=new Mnemonic("add", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("addi", "d");
+      mnemonic=new Mnemonic("addi", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("addiu", "d");
+      mnemonic=new Mnemonic("addiu", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("addu", "d");
+      mnemonic=new Mnemonic("addu", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("and", "d");
+      mnemonic=new Mnemonic("and", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("andi", "d");
+      mnemonic=new Mnemonic("andi", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("jalr", "d");
+      mnemonic=new Mnemonic("jalr", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lb", "d");
+      mnemonic=new Mnemonic("lb", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lbu", "d");
+      mnemonic=new Mnemonic("lbu", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lh", "d");
+      mnemonic=new Mnemonic("lh", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lhu", "d");
+      mnemonic=new Mnemonic("lhu", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lui", "d");
+      mnemonic=new Mnemonic("lui", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lw", "d");
+      mnemonic=new Mnemonic("lw", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lwl", "d");
+      mnemonic=new Mnemonic("lwl", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("lwr", "d");
+      mnemonic=new Mnemonic("lwr", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mfhi", "d");
+      mnemonic=new Mnemonic("mfhi", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mflo", "d");
+      mnemonic=new Mnemonic("mflo", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("nor", "d");
+      mnemonic=new Mnemonic("nor", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("or", "d");
+      mnemonic=new Mnemonic("or", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("ori", "d");
+      mnemonic=new Mnemonic("ori", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sll", "d");
+      mnemonic=new Mnemonic("sll", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sllv", "d");
+      mnemonic=new Mnemonic("sllv", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("slt", "d");
+      mnemonic=new Mnemonic("slt", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("slti", "d");
+      mnemonic=new Mnemonic("slti", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sltu", "d");
+      mnemonic=new Mnemonic("sltu", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sra", "d");
+      mnemonic=new Mnemonic("sra", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("srav", "d");
+      mnemonic=new Mnemonic("srav", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("srl", "d");
+      mnemonic=new Mnemonic("srl", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("srlv", "d");
+      mnemonic=new Mnemonic("srlv", "d",true);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("stliu", "d");
+      mnemonic=new Mnemonic("stliu", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sub", "d");
+      mnemonic=new Mnemonic("sub", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("subu", "d");
+      mnemonic=new Mnemonic("subu", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("xor", "d");
+      mnemonic=new Mnemonic("xor", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("xori", "d");
+      mnemonic=new Mnemonic("xori", "d",false);
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sw", "s");//le o r1 e salva seu valor no immediate+r
+      mnemonic=new Mnemonic("sw", "s",true);//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sb", "s");//le o r1 e salva seu valor no immediate+r
+      mnemonic=new Mnemonic("sb", "s",true);//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("sh", "s");//le o r1 e salva seu valor no immediate+r
+      mnemonic=new Mnemonic("sh", "s",true);//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("swl", "s");//le o r1 e salva seu valor no immediate+r
+      mnemonic=new Mnemonic("swl", "s",true);//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("swr", "s");//le o r1 e salva seu valor no immediate+r
+      mnemonic=new Mnemonic("swr", "s",true);//le o r1 e salva seu valor no immediate+r
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mthi", "s");// ele salva o r1 em hi
+      mnemonic=new Mnemonic("mthi", "s",false);// ele salva o r1 em hi
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mtlo", "s");// salva o r1 em Lo
+      mnemonic=new Mnemonic("mtlo", "s",false);// salva o r1 em Lo
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("mult", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
+      mnemonic=new Mnemonic("mult", "s",false);// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("multu", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
+      mnemonic=new Mnemonic("multu", "s",false);// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("div", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
+      mnemonic=new Mnemonic("div", "s",false);// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("divu", "s");// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
+      mnemonic=new Mnemonic("divu", "s",false);// ele le os valores de r1 e r2 faz a operaçao e salva no HI LO
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("jr", "s");// ele le o valor de r1
+      mnemonic=new Mnemonic("jr", "s",true);// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bltz", "s");// ele le o valor de r1
+      mnemonic=new Mnemonic("bltz", "s",false);// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bgez", "s");// ele le o valor de r1
+      mnemonic=new Mnemonic("bgez", "s",false);// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bltzal", "s");// ele le o valor de r1
+      mnemonic=new Mnemonic("bltzal", "s",false);// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("bgezal", "s");// ele le o valor de r1
+      mnemonic=new Mnemonic("bgezal", "s",false);// ele le o valor de r1
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("j", "s");// ele le o valor de r1 que no caso é um número
+      mnemonic=new Mnemonic("j", "s",true);// ele le o valor de r1 que no caso é um número
       allMnemonics.add(mnemonic);
-      mnemonic=new Mnemonic("jal", "s");// ele le o valor de r1 que no caso é um número
+      mnemonic=new Mnemonic("jal", "s",true);// ele le o valor de r1 que no caso é um número
       allMnemonics.add(mnemonic);
    }
 
@@ -121,25 +121,20 @@ public class Tools {
       }
       return false;
    }
-   public boolean isBranch(String func){
-      for(Mnemonic m:allMnemonics){
-         if(m.getName().startsWith("b")){
-            return true;
-         }
-      }
-      return false;
-   }
    public boolean isJump(String func){
-      for(Mnemonic m:allMnemonics){
-         if(m.getName().equals("j")||m.getName().equals("jal")){
-            return true;
-         }
-      }
-      return false;
+      return func.equals("j")||func.equals("jal");
    }
    public boolean instIsTypeR(String func){
        TypeR t= new TypeR();
        return t.isTypeR(func);
+   }
+   public boolean isForwardingMem(String func){
+      for(Mnemonic m:allMnemonics){
+         if(m.getName().equals(func.toLowerCase())&&m.isForwardingMem()){
+            return true;
+         }
+      }
+      return false;
    }
 
 }

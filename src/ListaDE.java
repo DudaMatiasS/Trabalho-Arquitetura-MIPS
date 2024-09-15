@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public class ListaDE {
     Instruction first;
     public ListaDE(){
@@ -16,7 +19,6 @@ public class ListaDE {
             }
             item.setNext(i);
             i.setPrev(item);
-
         }
     }
     public Instruction getFirst(){
@@ -33,10 +35,11 @@ public class ListaDE {
         i.setNext(nop);
         nop.setPrev(i);
     }
-    public void print(){
+    public void write(BufferedWriter writer) throws IOException {
         Instruction item = first;
-        while (item!=null){
-            System.out.println(item.getInstruction());
+        while (item != null) {
+            writer.write(item.getInstruction());
+            writer.newLine();
             item = item.getNext();
         }
     }

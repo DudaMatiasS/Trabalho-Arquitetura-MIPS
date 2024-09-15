@@ -4,8 +4,10 @@ import java.util.StringTokenizer;
 
 public class ReadAndWriteTxt {
     Calculations calc;
+
    ListaDE instructionList;
     public void txtReader(String filePath){
+
         instructionList = new ListaDE();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -18,47 +20,48 @@ public class ReadAndWriteTxt {
             reader.close();
             calc = new Calculations();
             calc.setInstructionList(instructionList);
+            calc.setWhicConflict(filePath);
+            //TENHO QUE TER CERTEZA QUE ACABOU DE FAZER OS CONFLITOS ANTES DE ESCREVER
+            writeOutput(filePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void lineBreak(String line){
-        String cleanLine = line.replace("(", " ").replace(")", " ").replace(",", "");
+        //String cleanLine = line.replace("(", " ").replace(")", " ").replace(",", "");
         Instruction instruction;
-        StringTokenizer caracter = new StringTokenizer(cleanLine, " \t\n");
+        StringTokenizer caracter = new StringTokenizer(line, " \t\n,$()");
         int tokenCount = caracter.countTokens();
         String[] caracterArr = new String[tokenCount];
         for (int i = 0; i < tokenCount; i++) {
             caracterArr[i] = caracter.nextToken();
+           // System.out.println(caracterArr[i]);
         }
 
-       if(tokenCount==3){
+        if(tokenCount==3){
             instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],"");
         }else if(tokenCount==4){
             instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],caracterArr[3]);
-        }else{
+        } else if (caracterArr[0].equals("NOP")) {
+            instruction = new Instruction("NOP","","","");
+        } else{
            instruction = new Instruction(caracterArr[0], caracterArr[1],"","");
-       }
+        }
+
         instructionList.insert(instruction);
 
     }
-    private void txtWriter(String line) {
-        if(line == null){
-            line = "Infelizmente não foi escrito. Verifique se há alguma instrução nessa linha! :(";
-        }
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\assets\\programOut.txt", true))) { // Modo de anexar (append)
-            writer.write(line);
-            writer.newLine();
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void txtClear(){
+    public void writeOutput(String inputFilePath) {
         try {
-            FileWriter fileWriter = new FileWriter("src\\assets\\programOut.txt");
-            fileWriter.close();
+            File inputFile = new File(inputFilePath);
+            String outputFileName = inputFile.getName().replace(".txt", "-RESULTADO.txt");
+            String outputFilePath = inputFile.getParent() + File.separator + outputFileName;
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
+            instructionList.write(writer);
+            writer.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
