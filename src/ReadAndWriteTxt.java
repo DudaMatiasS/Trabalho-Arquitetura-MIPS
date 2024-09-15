@@ -29,27 +29,26 @@ public class ReadAndWriteTxt {
     }
 
     private void lineBreak(String line){
-        //String cleanLine = line.replace("(", " ").replace(")", " ").replace(",", "");
-        Instruction instruction;
-        StringTokenizer caracter = new StringTokenizer(line, " \t\n,$()");
-        int tokenCount = caracter.countTokens();
-        String[] caracterArr = new String[tokenCount];
-        for (int i = 0; i < tokenCount; i++) {
-            caracterArr[i] = caracter.nextToken();
-           // System.out.println(caracterArr[i]);
-        }
+        if(!line.equals("nop")) {
+            Instruction instruction;
+            StringTokenizer caracter = new StringTokenizer(line, " \t\n,$()");
+            int tokenCount = caracter.countTokens();
+            String[] caracterArr = new String[tokenCount];
+            for (int i = 0; i < tokenCount; i++) {
+                caracterArr[i] = caracter.nextToken();
+                // System.out.println(caracterArr[i]);
+            }
 
-        if(tokenCount==3){
-            instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],"");
-        }else if(tokenCount==4){
-            instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],caracterArr[3]);
-        } else if (caracterArr[0].equals("NOP")) {
-            instruction = new Instruction("NOP","","","");
-        } else{
-           instruction = new Instruction(caracterArr[0], caracterArr[1],"","");
-        }
+            if (tokenCount == 3) {
+                instruction = new Instruction(caracterArr[0], caracterArr[1], caracterArr[2], "");
+            } else if (tokenCount == 4) {
+                instruction = new Instruction(caracterArr[0], caracterArr[1], caracterArr[2], caracterArr[3]);
+            } else {
+                instruction = new Instruction(caracterArr[0], caracterArr[1], "", "");
+            }
 
-        instructionList.insert(instruction);
+            instructionList.insert(instruction);
+        }
 
     }
     public void writeOutput(String inputFilePath) {
