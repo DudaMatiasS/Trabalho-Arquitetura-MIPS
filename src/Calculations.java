@@ -8,14 +8,16 @@ public class Calculations {
     public void setWhicConflict(String path){
         if(path.contains("1")||path.contains("2")){
             bubble();
-
+      
         } else if (path.contains("3")||path.contains("4")) {
             forwarding();
+           
+
         }else{
            reorderWithForwarding();
         }
 
-
+        //instructionList.print();
     }
 
     private void bubble(){
