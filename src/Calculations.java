@@ -6,18 +6,18 @@ public class Calculations {
 
     }
     public void setWhicConflict(String path){
-        if(path.contains("1")||path.contains("2")){
+        if(path.equals("TESTE-01.txt")||path.equals("TESTE-02.txt")){
             bubble();
       
-        } else if (path.contains("3")||path.contains("4")) {
+        } else if (path.equals("TESTE-03.txt")||path.equals("TESTE-04.txt")) {
             forwarding();
-           
 
-        }else{
-           reorderWithForwarding();
+        }else if(path.equals("TESTE-05.txt")||path.equals("TESTE-06.txt")||path.equals("TESTE-07.txt")){
+              System.out.println("REORDER WITH BUBBLE");
+        }else if(path.equals("TESTE-08.txt")||path.equals("TESTE-09.txt")||path.equals("TESTE-10.txt")){
+            reorderWithForwarding();
         }
-
-        //instructionList.print();
+     
     }
 
     private void bubble(){
