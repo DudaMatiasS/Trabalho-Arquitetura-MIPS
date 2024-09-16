@@ -4,21 +4,22 @@ import java.util.Map;
 
 public class TypeR {
     ArrayList<String> typeR;
-   public TypeR(){
-       typeR = new ArrayList<>();
-       setFunctOperatorBinary();
-   }
 
-    public boolean isTypeR(String mnemonic){
-         for(String aux:typeR){
-             if(aux.equals(mnemonic)){
-                 return true;
-             }
-         }
-         return false;
+    public TypeR() {
+        typeR = new ArrayList<>();
+        setFunctOperatorBinary();
     }
 
-    private void setFunctOperatorBinary(){
+    public boolean isTypeR(String mnemonic) {
+        for (String aux : typeR) {
+            if (aux.equals(mnemonic)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void setFunctOperatorBinary() {
         typeR.add("add");
         typeR.add("addu");
         typeR.add("sub");
@@ -46,6 +47,5 @@ public class TypeR {
         typeR.add("jr");
         typeR.add("jalr");
     }
-
 
 }

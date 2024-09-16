@@ -33,7 +33,13 @@ public class Instruction {
         }else if(func.equals("NOP")){
             return func;
         }else{
-            return func+" "+r1+", "+r2+", "+r3;
+            if(r2.equals("")){
+                return func+" "+r1;
+            }else if(r3.equals("")){
+                return func+" "+r1+", "+r2;
+            }else{
+                return func+" "+r1+", "+r2+", "+r3;
+            }
         }
         
     }
