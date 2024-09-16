@@ -48,10 +48,10 @@ public class Registers {
     }
     public String getRegister(String r){
         for(String rg:registers){
-            if(rg.equals(r)){
-                return r;
+            if(rg.equals("$"+r)){
+                return rg;
             }
         }
-        return "";
+        return r;
     }
 }
