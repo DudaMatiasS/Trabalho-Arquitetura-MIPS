@@ -24,7 +24,7 @@ public class ReadAndWriteTxt {
                 }
             }
             reader.close();
-            System.out.println("Número de linha do txt:" + lineNum);
+            System.out.println("Número de linha do txt: " + lineNum);
 
             calc = new Calculations();
             calc.setConfig(config);
@@ -43,6 +43,7 @@ public class ReadAndWriteTxt {
         for (int i = 0; i < tokenCount; i++) {
             caracterArr[i] = Integer.parseInt(caracter.nextToken());
             if (lineNum == 5) {
+
                 adress.add(caracterArr[i]);
             }
         }
