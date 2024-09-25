@@ -1,75 +1,90 @@
 import java.io.*;
+import java.io.ObjectInputFilter.Config;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class ReadAndWriteTxt {
     Calculations calc;
+    Configuration config;
+    ArrayList<Integer> adress;
 
-   ListaDE instructionList;
-    public void txtReader(String filePath){
-
-        instructionList = new ListaDE();
+    public void txtReader(String filePath) {
+        adress = new ArrayList<>();
+        config = new Configuration();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String line;
-            while ((line =reader.readLine()) != null) {
-                if(!line.isEmpty()){
-                    lineBreak(line.trim().toLowerCase());
+            int lineNum = 0;
+            while ((line = reader.readLine()) != null) {
+
+                if (!line.isEmpty()) {
+                    lineNum++;
+                    lineBreak(line.trim(), lineNum);
                 }
             }
             reader.close();
+            System.out.println("Número de linha do txt:" + lineNum);
+
             calc = new Calculations();
-            calc.setInstructionList(instructionList);
+            calc.setConfig(config);
             sendFileToCalculations(calc, filePath);
-            writeOutput(filePath);
+            // writeOutput(filePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void lineBreak(String line){
-        if(!line.equals("nop")){
-            Instruction instruction;
-            StringTokenizer caracter = new StringTokenizer(line, " \t\n,$()");
-            int tokenCount = caracter.countTokens();
-            String[] caracterArr = new String[tokenCount];
-            for (int i = 0; i < tokenCount; i++) {
-                caracterArr[i] = caracter.nextToken();
+    private void lineBreak(String line, int lineNum) {
+
+        StringTokenizer caracter = new StringTokenizer(line, " ");
+        int tokenCount = caracter.countTokens();
+        int[] caracterArr = new int[tokenCount];
+        for (int i = 0; i < tokenCount; i++) {
+            caracterArr[i] = Integer.parseInt(caracter.nextToken());
+            if (lineNum == 5) {
+                adress.add(caracterArr[i]);
             }
-            
-            if(tokenCount==3){
-                instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],"");
-            }else if(tokenCount==4){
-                instruction = new Instruction(caracterArr[0],caracterArr[1],caracterArr[2],caracterArr[3]);
-            } else{
-            instruction = new Instruction(caracterArr[0], caracterArr[1],"","");
-            }
-
-            instructionList.insert(instruction);
         }
-    }
-    public void writeOutput(String inputFilePath) {
-        try {
-            File inputFile = new File(inputFilePath);
-            String outputFileName = inputFile.getName().replace(".txt", "-RESULTADO.txt");
-            String outputFilePath = inputFile.getParent() + File.separator + outputFileName;
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
-            instructionList.write(writer);
-            writer.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (lineNum == 1) {
+            config.setMemorySize(caracterArr[0]);
+        } else if (lineNum == 2) {
+            config.setWordsLine(caracterArr[0]);
+        } else if (lineNum == 3) {
+            config.setLines(caracterArr[0]);
+        } else if (lineNum == 4) {
+            config.setVias(caracterArr[0]);
+        } else if (lineNum == 5) {
+            config.setAddress(adress);
         }
+
     }
-    private void sendFileToCalculations(Calculations calc, String path){
-        StringTokenizer t = new StringTokenizer(path,"/");
+
+    // public void writeOutput(String inputFilePath) {
+    // try {
+    // File inputFile = new File(inputFilePath);
+    // String outputFileName = inputFile.getName().replace(".txt",
+    // "-RESULTADO.txt");
+    // String outputFilePath = inputFile.getParent() + File.separator +
+    // outputFileName;
+
+    // BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
+    // instructionList.write(writer);
+    // writer.close();
+
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    // }
+
+    private void sendFileToCalculations(Calculations calc, String path) {
+        StringTokenizer t = new StringTokenizer(path, "/\\");
         int tCount = t.countTokens();
         String[] fileArr = new String[tCount];
         for (int i = 0; i < tCount; i++) {
             fileArr[i] = t.nextToken();
         }
-        calc.setWhicConflict(fileArr[fileArr.length-1]);
+        calc.setCacheMapping(fileArr[fileArr.length - 1]);
     }
 
 }
