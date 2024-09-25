@@ -32,6 +32,8 @@ public class Calculations {
             System.out.print(i + " ");
         }
         System.out.println();
+        System.out.println("Linha 1 resposta: " + getblockSizeBits());
+        System.out.println("Linha 2 resposta: " + getNumberSetsBits());
         direct();
         // if (path.equals("TESTE-01.txt") || path.equals("TESTE-02.txt")) {
 
@@ -44,15 +46,6 @@ public class Calculations {
         // path.equals("TESTE-10.txt")) {
 
         // }
-
-    }
-
-    private void direct() {
-
-        System.out.println("Linha 1 resposta: " + getblockSizeBits());
-        System.out.println("Linha 2 resposta: " + getNumberSetsBits());
-        System.out.println("Linha 3 resposta: " + getTAGBits());
-        firstStep();
         System.out.println("Blocos Acessados!!:");
         for (Integer i : acessedBlocks) {
             System.out.print(i + " ");
@@ -63,11 +56,21 @@ public class Calculations {
 
     }
 
-    private void associative() {
+    private void direct() {
+
+        System.out.println("Linha 3 resposta: " + getTAGBits(tool.findExponent(config.getLines())));
+        firstStep();
 
     }
 
+    private void associative() {
+        System.out.println("Linha 3 resposta: " + getTAGBits(0));
+        firstStep();
+    }
+
     private void conjAssociative() {
+        System.out.println("Linha 3 resposta: " + getTAGBits(tool.findExponent(getNumberSetsBits())));
+        firstStep();
 
     }
 
@@ -83,8 +86,8 @@ public class Calculations {
         System.out.println();
     }
 
-    private int getTAGBits() {
-        return (tool.findExponent(config.getMemorySize()) - (getblockSizeBits() + getNumberSetsBits()));
+    private int getTAGBits(int num) {
+        return (tool.findExponent(config.getMemorySize()) - (num + getblockSize()));
     }
 
     private int getblockSizeBits() {
