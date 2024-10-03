@@ -61,22 +61,22 @@ public class ReadAndWriteTxt {
 
     }
 
-    // public void writeOutput(String inputFilePath) {
-    // try {
-    // File inputFile = new File(inputFilePath);
-    // String outputFileName = inputFile.getName().replace(".txt",
-    // "-RESULTADO.txt");
-    // String outputFilePath = inputFile.getParent() + File.separator +
-    // outputFileName;
+    public void writeOutput(String inputFilePath) {
+        try {
+            File inputFile = new File(inputFilePath);
+            String outputFileName = inputFile.getName().replace(".txt",
+                    "-RESULTADO.txt");
+            String outputFilePath = inputFile.getParent() + File.separator +
+                    outputFileName;
 
-    // BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
-    // instructionList.write(writer);
-    // writer.close();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
+            calc.write(writer);
+            writer.close();
 
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void sendFileToCalculations(Calculations calc, String path) {
         StringTokenizer t = new StringTokenizer(path, "/\\");
