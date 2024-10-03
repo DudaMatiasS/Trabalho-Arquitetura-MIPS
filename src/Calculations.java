@@ -9,19 +9,21 @@ public class Calculations {
     int cacheMiss;
     int cacheHit;
     ArrayList<Integer> acessedBlocks;
+    String answer;
 
     public Calculations() {
         acessedBlocks = new ArrayList<>();
         cacheMiss = 0;
         cacheMiss = 0;
+        answer = "";
     }
 
     public void setConfig(Configuration config) {
         this.config = config;
-
+        setCacheMapping();
     }
 
-    public void setCacheMapping(String path) {
+    public void setCacheMapping() {
         System.out.println("Tamanho da mémoria RAM: " + config.getMemorySize());
         System.out.println("Quantidade de palavras na linha: " +
                 config.getWordsLine());
@@ -40,6 +42,8 @@ public class Calculations {
 
         } else if (config.getVias() != config.getLines() && config.getVias() != 1) {
             conjAssociative();
+        }else{
+            answer="ALGO DE ERRADO NAO ESTA CERTO!"
         }
         System.out.println("Blocos Acessados!!:");
         for (Integer i : acessedBlocks) {
@@ -57,7 +61,7 @@ public class Calculations {
         findBlockNumber();
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
-
+        answer=getblockSize()+" "+getNumberSetsBits()+" "+getTAGBits(tool.findExponent(config.getLines()))+" "+cacheMiss+" "+cacheHit
     }
 
     // mapeamento completamente associativo
@@ -68,6 +72,7 @@ public class Calculations {
         findBlockNumber();
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
+        answer=getblockSize()+" "+getNumberSetsBits()+" "+getTAGBits(0)+" "+cacheMiss+" "+cacheHit
     }
 
     // mapeamento associativo por conjunto
@@ -79,6 +84,7 @@ public class Calculations {
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
 
+        answer=getblockSize()+" "+getNumberSetsBits()+" "+getTAGBits(tool.findExponent(getNumberSetsBits()))+" "+cacheMiss+" "+cacheHit
     }
 
     private void findBlockNumber() {
@@ -127,8 +133,11 @@ public class Calculations {
     }
 
     public void write(BufferedWriter writer) {
-        // writer.write();
-        // writer.write();
-        // writer.newLine();
+        String[] aux = answer.split(" ");
+        for (String i : aux) {
+            writer.write(i);
+            writer.newLine();
+            writer.write();
+        }
     }
 }

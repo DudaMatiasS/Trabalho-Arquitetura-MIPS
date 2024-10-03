@@ -28,8 +28,7 @@ public class ReadAndWriteTxt {
 
             calc = new Calculations();
             calc.setConfig(config);
-            sendFileToCalculations(calc, filePath);
-            // writeOutput(filePath);
+            writeOutput(filePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,16 +75,6 @@ public class ReadAndWriteTxt {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void sendFileToCalculations(Calculations calc, String path) {
-        StringTokenizer t = new StringTokenizer(path, "/\\");
-        int tCount = t.countTokens();
-        String[] fileArr = new String[tCount];
-        for (int i = 0; i < tCount; i++) {
-            fileArr[i] = t.nextToken();
-        }
-        calc.setCacheMapping(fileArr[fileArr.length - 1]);
     }
 
 }
