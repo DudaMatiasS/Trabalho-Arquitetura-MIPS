@@ -1,9 +1,9 @@
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.lang.classfile.BufWriter;
 import java.util.ArrayList;
 
 public class Calculations {
-    ListaDE instructionList;
     Tools tool = new Tools();
     Configuration config;
     int cacheMiss;
@@ -35,6 +35,7 @@ public class Calculations {
 
             System.out.print(i + " ");
         }
+        System.out.println();
         if (config.getVias() == 1) {
             direct();
         } else if (config.getVias() == config.getLines()) {
@@ -42,8 +43,8 @@ public class Calculations {
 
         } else if (config.getVias() != config.getLines() && config.getVias() != 1) {
             conjAssociative();
-        }else{
-            answer="ALGO DE ERRADO NAO ESTA CERTO!"
+        } else {
+            answer = "ALGO DE ERRADO NAO ESTA CERTO!";
         }
         System.out.println("Blocos Acessados!!:");
         for (Integer i : acessedBlocks) {
@@ -61,7 +62,8 @@ public class Calculations {
         findBlockNumber();
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
-        answer=getblockSize()+" "+getNumberSetsBits()+" "+getTAGBits(tool.findExponent(config.getLines()))+" "+cacheMiss+" "+cacheHit
+        answer = getblockSizeBits() + " " + getNumberSetsBits() + " " + getTAGBits(tool.findExponent(config.getLines()))
+                + " " + cacheMiss + " " + cacheHit;
     }
 
     // mapeamento completamente associativo
@@ -72,7 +74,8 @@ public class Calculations {
         findBlockNumber();
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
-        answer=getblockSize()+" "+getNumberSetsBits()+" "+getTAGBits(0)+" "+cacheMiss+" "+cacheHit
+        answer = getblockSizeBits() + " " + getNumberSetsBits() + " " + getTAGBits(0) + " " + cacheMiss + " "
+                + cacheHit;
     }
 
     // mapeamento associativo por conjunto
@@ -84,12 +87,13 @@ public class Calculations {
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
 
-        answer=getblockSize()+" "+getNumberSetsBits()+" "+getTAGBits(tool.findExponent(getNumberSetsBits()))+" "+cacheMiss+" "+cacheHit
+        answer = getblockSizeBits() + " " + getNumberSetsBits() + " "
+                + getTAGBits(tool.findExponent(getNumberSetsBits()))
+                + " " + cacheMiss + " " + cacheHit;
     }
 
     private void findBlockNumber() {
         int result = 0;
-        System.out.print("Endereços: ");
         // i é os endereços
         for (Integer i : config.getAddress()) {
             // i/tamanho do bloco ai armazena o número do bloco
@@ -97,12 +101,12 @@ public class Calculations {
             // manda para a funçao blocks o número do bloco
             blocks(result);
         }
-        System.out.println();
+
     }
 
     // pega os bits da tag
     private int getTAGBits(int num) {
-        return (tool.findExponent(config.getMemorySize()) - (num + getblockSize()));
+        return (tool.findExponent(config.getMemorySize()) - (num + getblockSizeBits()));
     }
 
     // pegar o número de bits referente ao tamanho do bloco
@@ -132,12 +136,11 @@ public class Calculations {
         }
     }
 
-    public void write(BufferedWriter writer) {
+    public void write(BufferedWriter writer) throws IOException {
         String[] aux = answer.split(" ");
         for (String i : aux) {
-            writer.write(i);
+            writer.write(i + "\n");
             writer.newLine();
-            writer.write();
         }
     }
 }
