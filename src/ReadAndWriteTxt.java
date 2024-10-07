@@ -17,7 +17,6 @@ public class ReadAndWriteTxt {
             String line;
             int lineNum = 0;
             while ((line = reader.readLine()) != null) {
-
                 if (!line.isEmpty()) {
                     lineNum++;
                     lineBreak(line.trim(), lineNum);
@@ -25,7 +24,6 @@ public class ReadAndWriteTxt {
             }
             reader.close();
             System.out.println("Número de linha do txt: " + lineNum);
-
             calc = new Calculations();
             calc.setConfig(config);
             writeOutput(filePath);
@@ -35,14 +33,12 @@ public class ReadAndWriteTxt {
     }
 
     private void lineBreak(String line, int lineNum) {
-
         StringTokenizer caracter = new StringTokenizer(line, " ");
         int tokenCount = caracter.countTokens();
         int[] caracterArr = new int[tokenCount];
         for (int i = 0; i < tokenCount; i++) {
             caracterArr[i] = Integer.parseInt(caracter.nextToken());
             if (lineNum == 5) {
-
                 adress.add(caracterArr[i]);
             }
         }

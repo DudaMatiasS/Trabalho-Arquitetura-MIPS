@@ -23,13 +23,6 @@ public class Calculations {
     }
 
     public void setCacheMapping() {
-        System.out.println("Tamanho da mémoria RAM: " + config.getMemorySize());
-        System.out.println("Quantidade de palavras na linha: " +
-                config.getWordsLine());
-        System.out.println("Quantidade de linhas: " + config.getLines());
-        System.out.println("Número de vias(quantidade de linhas em um conjunto): " +
-                config.getVias());
-
         if (config.getVias() == 1) {
             direct();
         } else if (config.getVias() == config.getLines()) {
@@ -38,51 +31,31 @@ public class Calculations {
         } else if (config.getVias() != config.getLines() && config.getVias() != 1) {
             conjAssociative();
         } else {
-            answer = "ALGO DE ERRADO NAO ESTA CERTO!";
+            answer = "Opa! não direcionou corretamente";
         }
-        System.out.println("Blocos Acessados!!:");
-        for (Integer i : acessedBlocks) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
 
     }
 
     // mapeamento direto
     private void direct() {
-        findBlockNumber();
         System.out.println("mapeamento direito");
-        System.out.println("Linha 1 resposta: " + getblockSizeBits());
-        System.out.println("Linha 2 resposta: " + getNumberSetsBits());
-        System.out.println("Linha 3 resposta: " + getTAGBits(tool.findExponent(config.getLines())));
-        System.out.println("Linha 4 resposta: " + cacheMiss);
-        System.out.println("Linha 5 resposta: " + cacheHit);
+        findBlockNumber();
         answer = getblockSizeBits() + " " + getNumberSetsBits() + " " + getTAGBits(tool.findExponent(config.getLines()))
                 + " " + cacheMiss + " " + cacheHit;
     }
 
     // mapeamento completamente associativo
     private void associative() {
-        findBlockNumber();
         System.out.println("mapeamento completamente associativo");
-        System.out.println("Linha 1 resposta: " + getblockSizeBits());
-        System.out.println("Linha 2 resposta: " + getNumberSetsBits());
-        System.out.println("Linha 3 resposta: " + getTAGBits(0));
-        System.out.println("Linha 4 resposta: " + cacheMiss);
-        System.out.println("Linha 5 resposta: " + cacheHit);
+        findBlockNumber();
         answer = getblockSizeBits() + " " + getNumberSetsBits() + " " + getTAGBits(0) + " " + cacheMiss + " "
                 + cacheHit;
     }
 
     // mapeamento associativo por conjunto
     private void conjAssociative() {
-        findBlockNumber();
         System.out.println("mapeamento associativo por conjunto");
-        System.out.println("Linha 1 resposta: " + getblockSizeBits());
-        System.out.println("Linha 2 resposta: " + getNumberSetsBits());
-        System.out.println("Linha 3 resposta: " + getTAGBits(getNumberSetsBits()));
-        System.out.println("Linha 4 resposta: " + cacheMiss);
-        System.out.println("Linha 5 resposta: " + cacheHit);
+        findBlockNumber();
         answer = getblockSizeBits() + " " + getNumberSetsBits() + " "
                 + getTAGBits(getNumberSetsBits())
                 + " " + cacheMiss + " " + cacheHit;
@@ -135,7 +108,7 @@ public class Calculations {
     public void write(BufferedWriter writer) throws IOException {
         String[] aux = answer.split(" ");
         for (String i : aux) {
-            writer.write(i + "\n");
+            writer.write(i);
             writer.newLine();
         }
     }
