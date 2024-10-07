@@ -1,6 +1,6 @@
 
 public class Tools {
-   public int findExponent(int num) {
+   public long findExponent(long num) {
 
       if (num == 1) {
 

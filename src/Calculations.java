@@ -1,6 +1,5 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.lang.classfile.BufWriter;
 import java.util.ArrayList;
 
 public class Calculations {
@@ -30,12 +29,7 @@ public class Calculations {
         System.out.println("Quantidade de linhas: " + config.getLines());
         System.out.println("Número de vias(quantidade de linhas em um conjunto): " +
                 config.getVias());
-        System.out.print("Endereços: ");
-        for (Integer i : config.getAddress()) {
 
-            System.out.print(i + " ");
-        }
-        System.out.println();
         if (config.getVias() == 1) {
             direct();
         } else if (config.getVias() == config.getLines()) {
@@ -56,10 +50,11 @@ public class Calculations {
 
     // mapeamento direto
     private void direct() {
+        findBlockNumber();
+        System.out.println("mapeamento direito");
         System.out.println("Linha 1 resposta: " + getblockSizeBits());
         System.out.println("Linha 2 resposta: " + getNumberSetsBits());
         System.out.println("Linha 3 resposta: " + getTAGBits(tool.findExponent(config.getLines())));
-        findBlockNumber();
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
         answer = getblockSizeBits() + " " + getNumberSetsBits() + " " + getTAGBits(tool.findExponent(config.getLines()))
@@ -68,10 +63,11 @@ public class Calculations {
 
     // mapeamento completamente associativo
     private void associative() {
+        findBlockNumber();
+        System.out.println("mapeamento completamente associativo");
         System.out.println("Linha 1 resposta: " + getblockSizeBits());
         System.out.println("Linha 2 resposta: " + getNumberSetsBits());
         System.out.println("Linha 3 resposta: " + getTAGBits(0));
-        findBlockNumber();
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
         answer = getblockSizeBits() + " " + getNumberSetsBits() + " " + getTAGBits(0) + " " + cacheMiss + " "
@@ -80,24 +76,24 @@ public class Calculations {
 
     // mapeamento associativo por conjunto
     private void conjAssociative() {
+        findBlockNumber();
+        System.out.println("mapeamento associativo por conjunto");
         System.out.println("Linha 1 resposta: " + getblockSizeBits());
         System.out.println("Linha 2 resposta: " + getNumberSetsBits());
-        System.out.println("Linha 3 resposta: " + getTAGBits(tool.findExponent(getNumberSetsBits())));
-        findBlockNumber();
+        System.out.println("Linha 3 resposta: " + getTAGBits(getNumberSetsBits()));
         System.out.println("Linha 4 resposta: " + cacheMiss);
         System.out.println("Linha 5 resposta: " + cacheHit);
-
         answer = getblockSizeBits() + " " + getNumberSetsBits() + " "
-                + getTAGBits(tool.findExponent(getNumberSetsBits()))
+                + getTAGBits(getNumberSetsBits())
                 + " " + cacheMiss + " " + cacheHit;
     }
 
     private void findBlockNumber() {
         int result = 0;
-        // i é os endereços
+        // i é os endereçoss
         for (Integer i : config.getAddress()) {
             // i/tamanho do bloco ai armazena o número do bloco
-            result = i / getblockSize();
+            result = (int) (i / getblockSize());
             // manda para a funçao blocks o número do bloco
             blocks(result);
         }
@@ -105,22 +101,22 @@ public class Calculations {
     }
 
     // pega os bits da tag
-    private int getTAGBits(int num) {
+    private long getTAGBits(long num) {
         return (tool.findExponent(config.getMemorySize()) - (num + getblockSizeBits()));
     }
 
     // pegar o número de bits referente ao tamanho do bloco
-    private int getblockSizeBits() {
+    private long getblockSizeBits() {
         return tool.findExponent(getblockSize());
     }
 
     // achar o número de bits do conjuntos
-    private int getNumberSetsBits() {
+    private long getNumberSetsBits() {
         return tool.findExponent(config.getLines() / config.getVias());
     }
 
     // achar o tamanho da linha/bloco
-    private int getblockSize() {
+    private long getblockSize() {
         return config.getWordsLine() * 4;
     }
 

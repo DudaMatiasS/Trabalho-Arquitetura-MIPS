@@ -1,41 +1,41 @@
 import java.util.ArrayList;
 
 public class Configuration {
-    int memorySize;
-    int wordsLine;
-    int lines;
-    int vias;
+    long memorySize;
+    long wordsLine;
+    long lines;
+    long vias;
     ArrayList<Integer> address;
 
-    public int getMemorySize() {
+    public long getMemorySize() {
         return memorySize;
     }
 
-    public void setMemorySize(int memorySize) {
+    public void setMemorySize(long memorySize) {
         this.memorySize = memorySize;
     }
 
-    public int getWordsLine() {
+    public long getWordsLine() {
         return wordsLine;
     }
 
-    public void setWordsLine(int wordsLine) {
+    public void setWordsLine(long wordsLine) {
         this.wordsLine = wordsLine;
     }
 
-    public int getLines() {
+    public long getLines() {
         return lines;
     }
 
-    public void setLines(int lines) {
+    public void setLines(long lines) {
         this.lines = lines;
     }
 
-    public int getVias() {
+    public long getVias() {
         return vias;
     }
 
-    public void setVias(int vias) {
+    public void setVias(long vias) {
         this.vias = vias;
     }
 
